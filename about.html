@@ -10,7 +10,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -24,7 +24,10 @@
             --accent: #6366f1;
             --accent-hover: #818cf8;
             --accent-glow: rgba(99, 102, 241, 0.15);
+            --accent-muted: rgba(99, 102, 241, 0.08);
             --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
             --radius: 12px;
             --radius-sm: 8px;
             --max-width: 1000px;
@@ -42,7 +45,10 @@
             --accent: #4f46e5;
             --accent-hover: #4338ca;
             --accent-glow: rgba(79, 70, 229, 0.12);
+            --accent-muted: rgba(79, 70, 229, 0.06);
             --success: #16a34a;
+            --warning: #d97706;
+            --danger: #dc2626;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -360,6 +366,214 @@
             font-weight: 600;
         }
 
+        /* ============================================
+           GOVERNANCE STATS — NEW ON ABOUT PAGE
+           ============================================ */
+        .governance-stats-section {
+            background: var(--bg);
+        }
+
+        .governance-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            opacity: 0.4;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-sublabel {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* ============================================
+           GOVERNANCE IN PRACTICE — NEW ON ABOUT PAGE
+           ============================================ */
+        .practice-section {
+            background: var(--bg-elevated);
+        }
+
+        .practice-box {
+            max-width: 750px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .practice-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .practice-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .practice-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .practice-dot.red { background: var(--danger); }
+        .practice-dot.yellow { background: var(--warning); }
+        .practice-dot.green { background: var(--success); }
+
+        .practice-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .practice-body {
+            padding: 1.5rem;
+        }
+
+        .practice-scenario {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .practice-scenario-label {
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .practice-scenario-text {
+            color: var(--text-primary);
+        }
+
+        .practice-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .practice-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.875rem;
+            padding: 0.875rem 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+        }
+
+        .practice-step:hover {
+            border-color: var(--accent);
+        }
+
+        .step-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            margin-top: 1px;
+        }
+
+        .step-icon.check {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        .step-icon.block {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+
+        .step-icon.human {
+            background: var(--accent-muted);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .step-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .step-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .practice-meta {
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
         /* Values */
         .values-grid {
             display: grid;
@@ -553,6 +767,13 @@
 
             .story-box { padding: 2rem 1.5rem; }
 
+            .governance-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .practice-box { margin: 0 -0.5rem; }
+
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -633,6 +854,84 @@
                 <p>We started this company to solve a problem we lived: <strong>how to make AI-agent systems powerful enough to execute complex work, while keeping humans in control of what matters.</strong></p>
 
                 <p>Today, we're a small, focused team based in Toronto, building infrastructure we believe the next generation of AI-native companies will need &mdash; not as a feature, but as a foundation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GOVERNANCE STATS — NEW ON ABOUT PAGE
+         ============================================ -->
+    <section class="governance-stats-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Governance at Scale</h2>
+                <p>Our systems enforce accountability through automated policy checks and immutable audit trails.</p>
+            </div>
+            <div class="governance-stats fade-in">
+                <div class="stat-card">
+                    <div class="stat-number">47</div>
+                    <div class="stat-label">Policy Checks</div>
+                    <div class="stat-sublabel">Per output generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Human Review</div>
+                    <div class="stat-sublabel">Of high-risk decisions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Unaudited Actions</div>
+                    <div class="stat-sublabel">Every agent move logged</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GOVERNANCE IN PRACTICE — NEW ON ABOUT PAGE
+         ============================================ -->
+    <section class="practice-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Governance in Practice</h2>
+                <p>A real example of how our Reviewer Agent enforces policy during a compliance workflow.</p>
+            </div>
+            <div class="practice-box fade-in">
+                <div class="practice-header">
+                    <div class="practice-dots">
+                        <div class="practice-dot red"></div>
+                        <div class="practice-dot yellow"></div>
+                        <div class="practice-dot green"></div>
+                    </div>
+                    <div class="practice-title">reviewer-agent — compliance-report</div>
+                </div>
+                <div class="practice-body">
+                    <div class="practice-scenario">
+                        <div class="practice-scenario-label">Scenario</div>
+                        <div class="practice-scenario-text">Coder Agent generates a quarterly compliance report for a financial client. Contains third-party data references and forward-looking statements.</div>
+                    </div>
+                    <div class="practice-steps">
+                        <div class="practice-step">
+                            <div class="step-icon check">&#10003;</div>
+                            <div class="step-text"><strong>Data lineage verified</strong> &mdash; All third-party sources traced to approved registries (Policy 12.3)</div>
+                        </div>
+                        <div class="practice-step">
+                            <div class="step-icon block">&#10007;</div>
+                            <div class="step-text"><strong>Confidence threshold failed</strong> &mdash; Forward-looking claim scored 72%, minimum is 85% (Policy 8.1). Output blocked and returned for revision.</div>
+                        </div>
+                        <div class="practice-step">
+                            <div class="step-icon human">&#9203;</div>
+                            <div class="step-text"><strong>Human escalation triggered</strong> &mdash; Novel regulatory scenario not in corpus. Assigned to Compliance Lead with full context and risk assessment.</div>
+                        </div>
+                        <div class="practice-step">
+                            <div class="step-icon check">&#10003;</div>
+                            <div class="step-text"><strong>Revised output approved</strong> &mdash; After human review and Coder Agent revision, all 47 policy checks passed. Forwarded to approval queue with immutable audit trail.</div>
+                        </div>
+                    </div>
+                    <div class="practice-meta">
+                        run_id: rev-2026-q1-8f4d2a | total_time: 4m 32s | human_touches: 2 | final_status: approved
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -754,7 +1053,6 @@
         (function() {
             const toggle = document.getElementById('themeToggle');
             const html = document.documentElement;
-
             const savedTheme = localStorage.getItem('theme');
             const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
