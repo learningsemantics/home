@@ -1,140 +1,703 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About | Learning Semantics</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Learning Semantics</title>
+    <meta name="description" content="Learn about Learning Semantics — our mission, approach, and commitment to accountable AI.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg-elevated: #12121a;
+            --bg-card: #1a1a24;
+            --border: #2a2a3a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6a6a7a;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --success: #22c55e;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --max-width: 1000px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text-primary); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 2rem 5rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        /* Mission */
+        .mission-section {
+            background: var(--bg-elevated);
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .mission-text h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .mission-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .mission-visual .icon {
+            font-size: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission-visual p {
+            position: relative;
+            z-index: 1;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .value-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .value-card .icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .value-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Team */
+        .team-section {
+            background: var(--bg-elevated);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-avatar {
+            width: 96px;
+            height: 96px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--text-muted);
+        }
+
+        .team-member h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-member p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Location */
+        .location-box {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .location-box .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-box h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-box p {
+            color: var(--text-secondary);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--bg-elevated);
+            text-align: center;
+        }
+
+        .cta-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 4rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--text-primary); }
+
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover { color: var(--text-primary); }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+
+            .hero { padding: 8rem 1.5rem 4rem; }
+
+            .mission-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .mission-text h2 { text-align: center; }
+
+            section { padding: 3rem 1.5rem; }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .location-box { padding: 2rem 1.5rem; }
+        }
+    </style>
 </head>
-
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">
-        <div class="brand-mark">LS</div>
-        <div>
-          <strong>Learning Semantics</strong>
-          <span>Finding Meaning</span>
-        </div>
-      </div>
-      <nav>
-        <a href="index.html#platform">Platform</a>
-        <a href="index.html#architecture">Architecture</a>
-        <a href="about.html">People</a>
-        <a href="index.html#contact">Contact</a>
-</nav>
-      </nav>
-    </div>
-  </header>
 
-  <main>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-dot"></span>
+                Learning Semantics
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/privacy.html">Privacy</a>
+                <a href="/terms.html">Terms</a>
+                <a href="/#contact" class="btn btn-primary">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
     <section class="hero">
-      <div class="container">
-        <p class="eyebrow">About Us</p>
-        <h1>Building AI-native systems that can be trusted.</h1>
-        <p class="lead">
-          Learning Semantics is an AI-native research and infrastructure company focused on
-          governed, agent-based intelligence systems designed for real-world deployment.
+        <div class="badge">About Us</div>
+        <h1>Building accountable AI infrastructure</h1>
+        <p class="hero-subtitle">
+            We believe AI should amplify human judgment, not replace it. Our mission is to build the governance layer that makes AI-agent systems transparent, auditable, and accountable.
         </p>
-      </div>
     </section>
 
-    <section id="mission" class="section">
-      <div class="container">
-        <h2>Our Mission</h2>
-        <p class="lead">
-          To enable meaningful use of AI in environments where accountability matters —
-          by embedding governance, human authority, and auditability directly into system design.
-        </p>
-      </div>
-    </section>
-
-    <section id="approach" class="section alt">
-      <div class="container">
-        <h2>Our Approach</h2>
-
-        <div class="cards">
-          <div class="card">
-            <h3>AI-Native by Design</h3>
-            <p>
-              AI agents are not features — they are the execution layer of the system.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Human-Governed</h3>
-            <p>
-              Humans retain semantic authority, approval control, and accountability.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Governance as Architecture</h3>
-            <p>
-              Auditability, versioning, and review are built into the system — not added later.
-            </p>
-          </div>
+    <!-- Mission -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-text fade-in">
+                    <h2>Why we exist</h2>
+                    <p>As AI systems move from recommendation engines to autonomous execution, the gap between what AI does and what humans can explain is growing. Organizations deploying AI agents face a critical challenge: how to harness AI's power while maintaining accountability.</p>
+                    <p>Learning Semantics was founded to solve this. We build infrastructure that embeds governance into AI-agent systems from the ground up — not as an afterthought, but as a core architectural principle.</p>
+                    <p>Our approach ensures that AI performs the complex reasoning and execution work, while humans retain semantic authority: the power to define intent, approve outcomes, and remain accountable for decisions.</p>
+                </div>
+                <div class="mission-visual fade-in">
+                    <div class="icon">🎯</div>
+                    <p>"AI performs the work. Humans retain the authority."</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="section">
-  <div class="container">
-    <h2>Governance & Research Roles</h2>
-
-    <p class="lead">
-      Learning Semantics maintains a lean human governance structure,
-      with AI agents performing the majority of research and execution operations.
-    </p>
-
-    <div class="cards">
-      
-      <div class="card">
-        <h3>Michael Fiedler</h3>
-        <p><strong>Director of Semantic Intelligence & Governance</strong></p>
-        <p>
-          Oversees semantic standards, and institutional alignment.
-        </p>
-
-        <a href="https://www.linkedin.com/in/michaelfiedlerqc" target="_blank" class="linkedin-icon" aria-label="Michael Fiedler LinkedIn">
-          <!-- LinkedIn SVG -->
-          <svg viewBox="0 0 24 24" width="20" height="20">
-            <path fill="currentColor" d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.5 17V10H6V17H8.5M7.25 8.7A1.45 1.45 0 1 0 7.25 5.8A1.45 1.45 0 0 0 7.25 8.7M18 17V13.5C18 11.57 16.93 10 15.09 10C14.1 10 13.44 10.54 13.17 11.04H13.13V10H10.75C10.78 10.69 10.75 17 10.75 17H13.25V13.1C13.25 12.1 13.75 11.4 14.6 11.4C15.44 11.4 15.75 12.05 15.75 13.1V17H18Z"/>
-          </svg>
-        </a>
-      </div>
-
-      <div class="card">
-        <h3>Sunanda Pandit</h3>
-        <p><strong>Director of Applied Semantics & Learning Systems</strong></p>
-        <p>
-          Guides applied meaning representation and learning system alignment.
-        </p>
-
-        <a href="https://www.linkedin.com/in/sunandapandit" target="_blank" class="linkedin-icon" aria-label="Sunanda Pandit LinkedIn">
-          <svg viewBox="0 0 24 24" width="20" height="20">
-            <path fill="currentColor" d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.5 17V10H6V17H8.5M7.25 8.7A1.45 1.45 0 1 0 7.25 5.8A1.45 1.45 0 0 0 7.25 8.7M18 17V13.5C18 11.57 16.93 10 15.09 10C14.1 10 13.44 10.54 13.17 11.04H13.13V10H10.75C10.78 10.69 10.75 17 10.75 17H13.25V13.1C13.25 12.1 13.75 11.4 14.6 11.4C15.44 11.4 15.75 12.05 15.75 13.1V17H18Z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <section class="section alt">
-      <div class="container">
-        <blockquote>
-          Finding Meaning
-        </blockquote>
-      </div>
+    <!-- Values -->
+    <section>
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Principles</h2>
+                <p>The values that guide how we build and operate.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card fade-in">
+                    <div class="icon">🔍</div>
+                    <h3>Transparency First</h3>
+                    <p>Every decision, every agent action, every approval is logged and auditable. If you can't explain it, you can't govern it.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="icon">⚖️</div>
+                    <h3>Human Authority</h3>
+                    <p>Humans define intent and retain final approval. AI executes within constraints. The hierarchy is clear and enforced.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="icon">🏗️</div>
+                    <h3>Governance by Design</h3>
+                    <p>Oversight, risk management, and auditability are embedded into the architecture — not bolted on later.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="icon">🛡️</div>
+                    <h3>Accountability</h3>
+                    <p>Clear chains of responsibility. Immutable records. When something matters, there is always a human who is accountable.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="icon">🔧</div>
+                    <h3>Pragmatic Engineering</h3>
+                    <p>We build systems that work in the real world — for regulated industries, complex organizations, and high-stakes decisions.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="icon">🇨🇦</div>
+                    <h3>Canadian Roots</h3>
+                    <p>Aligned with Canadian AI governance expectations. We believe responsible AI development is a competitive advantage.</p>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="container footer">
-      <span>© Learning Semantics</span>
-      <span>AI-native. Agent-driven. Human-governed.</span>
-    </div>
-  </footer>
+    <!-- Team -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Team</h2>
+                <p>Engineers, researchers, and operators building the future of accountable AI.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="team-avatar">👤</div>
+                    <h4>Founder Name</h4>
+                    <p>CEO & Co-Founder</p>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-avatar">👤</div>
+                    <h4>Founder Name</h4>
+                    <p>CTO & Co-Founder</p>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-avatar">👤</div>
+                    <h4>Team Member</h4>
+                    <p>Head of Engineering</p>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-avatar">👤</div>
+                    <h4>Team Member</h4>
+                    <p>Head of Research</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section>
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Where We Work</h2>
+                <p>Building from Canada, serving the world.</p>
+            </div>
+            <div class="location-box fade-in">
+                <div class="icon">📍</div>
+                <h3>Toronto, Ontario, Canada</h3>
+                <p>Our headquarters is in Toronto, where we work alongside Canada's leading AI research community and within the framework of emerging national AI governance standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box fade-in">
+                <h2>Want to learn more?</h2>
+                <p>We'd love to discuss how Learning Semantics can help your organization build accountable AI systems.</p>
+                <a href="/#contact" class="btn btn-primary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <span class="logo-dot"></span>
+                    Learning Semantics
+                </a>
+                <p>Building the infrastructure for accountable AI-agent systems. Based in Canada.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="/#platform">Platform</a>
+                <a href="/#architecture">Architecture</a>
+                <a href="/#governance">Governance</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about.html">About</a>
+                <a href="/#contact">Contact</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Learning Semantics. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
 </body>
 </html>
