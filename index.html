@@ -6,16 +6,13 @@
     <title>Learning Semantics | AI-Native Governance Infrastructure</title>
     <meta name="description" content="Learning Semantics builds governed AI-agent systems where AI performs core reasoning and execution, while humans retain semantic authority, accountability, and control.">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="Learning Semantics | AI-Native Governance Infrastructure">
     <meta property="og:description" content="Governed AI-agent systems for accountable organizations.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://learningsemantics.com">
 
-    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%236366f1'/><circle cx='50' cy='50' r='20' fill='%23f0f0f5'/></svg>">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,6 +31,7 @@
             --accent: #6366f1;
             --accent-hover: #818cf8;
             --accent-glow: rgba(99, 102, 241, 0.15);
+            --accent-muted: rgba(99, 102, 241, 0.08);
             --success: #22c55e;
             --warning: #f59e0b;
             --danger: #ef4444;
@@ -58,6 +56,7 @@
             --accent: #4f46e5;
             --accent-hover: #4338ca;
             --accent-glow: rgba(79, 70, 229, 0.12);
+            --accent-muted: rgba(79, 70, 229, 0.06);
             --success: #16a34a;
             --warning: #d97706;
             --danger: #dc2626;
@@ -65,15 +64,9 @@
             --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -100,9 +93,7 @@
             flex-shrink: 0;
         }
 
-        .theme-toggle:hover {
-            border-color: var(--accent);
-        }
+        .theme-toggle:hover { border-color: var(--accent); }
 
         .theme-toggle-knob {
             width: 18px;
@@ -123,27 +114,12 @@
             transition: opacity 0.2s;
         }
 
-        .theme-toggle-knob .moon-icon {
-            position: absolute;
-            opacity: 1;
-        }
+        .theme-toggle-knob .moon-icon { position: absolute; opacity: 1; }
+        .theme-toggle-knob .sun-icon { position: absolute; opacity: 0; }
 
-        .theme-toggle-knob .sun-icon {
-            position: absolute;
-            opacity: 0;
-        }
-
-        [data-theme="light"] .theme-toggle-knob {
-            transform: translateX(20px);
-        }
-
-        [data-theme="light"] .theme-toggle-knob .moon-icon {
-            opacity: 0;
-        }
-
-        [data-theme="light"] .theme-toggle-knob .sun-icon {
-            opacity: 1;
-        }
+        [data-theme="light"] .theme-toggle-knob { transform: translateX(20px); }
+        [data-theme="light"] .theme-toggle-knob .moon-icon { opacity: 0; }
+        [data-theme="light"] .theme-toggle-knob .sun-icon { opacity: 1; }
 
         /* Navigation */
         nav {
@@ -158,9 +134,7 @@
             transition: var(--transition);
         }
 
-        [data-theme="light"] nav {
-            background: rgba(250, 250, 250, 0.85);
-        }
+        [data-theme="light"] nav { background: rgba(250, 250, 250, 0.85); }
 
         .nav-container {
             max-width: var(--max-width);
@@ -203,9 +177,7 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
+        .nav-links a:hover { color: var(--text-primary); }
 
         .btn {
             display: inline-flex;
@@ -467,13 +439,9 @@
             transition: all 0.3s;
         }
 
-        .arch-step:hover {
-            border-color: var(--accent);
-        }
+        .arch-step:hover { border-color: var(--accent); }
 
-        .arch-step:not(:last-child) {
-            margin-bottom: 1rem;
-        }
+        .arch-step:not(:last-child) { margin-bottom: 1rem; }
 
         .arch-step:not(:last-child)::after {
             content: '';
@@ -512,11 +480,236 @@
             font-size: 0.875rem;
         }
 
-        /* Governance */
+        /* ============================================
+           GOVERNANCE SECTION — NEW FEATURES
+           ============================================ */
+
         .governance-section {
             background: var(--bg-elevated);
         }
 
+        /* Feature 1: Policy Counter Stats */
+        .governance-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            opacity: 0.4;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-sublabel {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Feature 2: Interactive Demo */
+        .demo-section {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .demo-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .demo-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .demo-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .demo-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .demo-dot.red { background: var(--danger); }
+        .demo-dot.yellow { background: var(--warning); }
+        .demo-dot.green { background: var(--success); }
+
+        .demo-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .demo-body {
+            padding: 1.5rem;
+        }
+
+        .demo-scenario {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .demo-scenario-label {
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-scenario-text {
+            color: var(--text-primary);
+        }
+
+        .demo-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-btn {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .demo-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .demo-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .demo-result {
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .demo-result.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .demo-result.blocked {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .demo-result.approved {
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .demo-result.pending {
+            background: var(--accent-muted);
+            border: 1px solid var(--accent);
+        }
+
+        .demo-result-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .demo-result.blocked .demo-result-header { color: var(--danger); }
+        .demo-result.approved .demo-result-header { color: var(--success); }
+        .demo-result.pending .demo-result-header { color: var(--accent); }
+
+        .demo-result-body {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .demo-result-body strong {
+            color: var(--text-primary);
+        }
+
+        .demo-meta {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Original Governance Grid */
         .governance-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -609,9 +802,7 @@
             margin: 0 auto;
         }
 
-        .cta-box h2 {
-            margin-bottom: 1rem;
-        }
+        .cta-box h2 { margin-bottom: 1rem; }
 
         .cta-box p {
             color: var(--text-secondary);
@@ -667,9 +858,7 @@
             text-decoration: none;
         }
 
-        .form-note a:hover {
-            text-decoration: underline;
-        }
+        .form-note a:hover { text-decoration: underline; }
 
         /* Footer */
         footer {
@@ -709,9 +898,7 @@
             transition: color 0.2s;
         }
 
-        .footer-col a:hover {
-            color: var(--text-primary);
-        }
+        .footer-col a:hover { color: var(--text-primary); }
 
         .footer-bottom {
             max-width: var(--max-width);
@@ -740,19 +927,13 @@
             transition: color 0.2s;
         }
 
-        .social-links a:hover {
-            color: var(--text-primary);
-        }
+        .social-links a:hover { color: var(--text-primary); }
 
         /* Mobile */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+            .nav-links { display: none; }
 
-            .hero {
-                padding: 8rem 1.5rem 4rem;
-            }
+            .hero { padding: 8rem 1.5rem 4rem; }
 
             .flow-diagram {
                 flex-direction: column;
@@ -764,14 +945,26 @@
                 width: 24px;
             }
 
+            .governance-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .demo-actions {
+                flex-direction: column;
+            }
+
+            .demo-btn {
+                width: 100%;
+                text-align: center;
+            }
+
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            section {
-                padding: 3rem 1.5rem;
-            }
+            section { padding: 3rem 1.5rem; }
         }
 
         /* Scroll animations */
@@ -929,13 +1122,104 @@
         </div>
     </section>
 
-    <!-- Governance -->
+    <!-- ============================================
+         GOVERNANCE SECTION — WITH NEW FEATURES
+         ============================================ -->
     <section id="governance" class="governance-section">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Built for environments where accountability matters</h2>
                 <p>Aligned with emerging Canadian AI governance expectations by embedding oversight, transparency, risk management, and auditability into the operating architecture.</p>
             </div>
+
+            <!-- FEATURE 1: Policy Counter Stats -->
+            <div class="governance-stats fade-in">
+                <div class="stat-card">
+                    <div class="stat-number">47</div>
+                    <div class="stat-label">Policy Checks</div>
+                    <div class="stat-sublabel">Per output generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Human Review</div>
+                    <div class="stat-sublabel">Of high-risk decisions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Unaudited Actions</div>
+                    <div class="stat-sublabel">Every agent move logged</div>
+                </div>
+            </div>
+
+            <!-- FEATURE 2: Interactive "See It In Action" Demo -->
+            <div class="demo-section fade-in">
+                <div class="demo-container">
+                    <div class="demo-header">
+                        <div class="demo-dots">
+                            <div class="demo-dot red"></div>
+                            <div class="demo-dot yellow"></div>
+                            <div class="demo-dot green"></div>
+                        </div>
+                        <div class="demo-title">reviewer-agent — simulation</div>
+                    </div>
+                    <div class="demo-body">
+                        <div class="demo-scenario">
+                            <div class="demo-scenario-label">Incoming Output</div>
+                            <div class="demo-scenario-text">Coder Agent generated a compliance report for a financial client. Contains 3rd-party data references.</div>
+                        </div>
+                        <div class="demo-actions">
+                            <button class="demo-btn" onclick="showDemo('blocked')">&#128737;&#65039; Run Policy Check</button>
+                            <button class="demo-btn" onclick="showDemo('approved')">&#9989; Simulate Clean Output</button>
+                            <button class="demo-btn" onclick="showDemo('pending')">&#9203; Human Review Queue</button>
+                        </div>
+                        <div class="demo-result blocked" id="demo-blocked">
+                            <div class="demo-result-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+                                BLOCKED — Policy Violation Detected
+                            </div>
+                            <div class="demo-result-body">
+                                <strong>Reviewer Agent found 2 issues:</strong><br>
+                                1. Missing data lineage citation (Policy 12.3)<br>
+                                2. Confidence threshold below 85% for financial claims (Policy 8.1)<br><br>
+                                Output returned to Coder Agent for revision. Human operator notified.
+                            </div>
+                            <div class="demo-meta">
+                                run_id: rev-2026-05-03-8f4d2a | blocked_at: 14:32:07 UTC | reviewer: policy-v2.4
+                            </div>
+                        </div>
+                        <div class="demo-result approved" id="demo-approved">
+                            <div class="demo-result-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                                APPROVED — All Checks Passed
+                            </div>
+                            <div class="demo-result-body">
+                                <strong>47 policy checks completed:</strong><br>
+                                Data lineage verified, confidence thresholds met, bias scan clean, compliance tags present.<br><br>
+                                Output forwarded to Human Approval queue with full audit trail attached.
+                            </div>
+                            <div class="demo-meta">
+                                run_id: rev-2026-05-03-9a1b3c | approved_at: 14:28:51 UTC | reviewer: policy-v2.4
+                            </div>
+                        </div>
+                        <div class="demo-result pending" id="demo-pending">
+                            <div class="demo-result-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                PENDING — Human Review Required
+                            </div>
+                            <div class="demo-result-body">
+                                <strong>Reviewer Agent escalated to human:</strong><br>
+                                Output contains novel scenario not covered by existing policy corpus (Confidence: 72%).<br><br>
+                                Assigned to Sarah Chen (Compliance Lead) with recommendation context and risk assessment.
+                            </div>
+                            <div class="demo-meta">
+                                run_id: rev-2026-05-03-7e2f1b | queued_at: 14:35:22 UTC | assignee: s.chen@company.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Original Governance Grid -->
             <div class="governance-grid">
                 <div class="governance-item fade-in">
                     <div class="check"></div>
@@ -1053,8 +1337,6 @@
         (function() {
             const toggle = document.getElementById('themeToggle');
             const html = document.documentElement;
-
-            // Check for saved preference or system preference
             const savedTheme = localStorage.getItem('theme');
             const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
@@ -1071,6 +1353,26 @@
                 localStorage.setItem('theme', newTheme);
             });
         })();
+
+        // Demo interaction
+        function showDemo(type) {
+            // Hide all results
+            document.querySelectorAll('.demo-result').forEach(el => el.classList.remove('show'));
+            // Remove active state from buttons
+            document.querySelectorAll('.demo-btn').forEach(el => el.classList.remove('active'));
+
+            // Show selected result
+            const result = document.getElementById('demo-' + type);
+            if (result) {
+                result.classList.add('show');
+            }
+
+            // Mark button as active
+            const buttons = document.querySelectorAll('.demo-btn');
+            if (type === 'blocked') buttons[0].classList.add('active');
+            if (type === 'approved') buttons[1].classList.add('active');
+            if (type === 'pending') buttons[2].classList.add('active');
+        }
 
         // Scroll fade-in animation
         const observerOptions = {
