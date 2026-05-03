@@ -1,160 +1,904 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Learning Semantics | Finding Meaning</title>
-  <meta name="description" content="Learning Semantics is an AI-native, agent-driven, human-governed intelligence infrastructure company." />
-  <link rel="icon" href="favicon.svg"/>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Semantics | AI-Native Governance Infrastructure</title>
+    <meta name="description" content="Learning Semantics builds governed AI-agent systems where AI performs core reasoning and execution, while humans retain semantic authority, accountability, and control.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Learning Semantics | AI-Native Governance Infrastructure">
+    <meta property="og:description" content="Governed AI-agent systems for accountable organizations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://learningsemantics.com">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg-elevated: #12121a;
+            --bg-card: #1a1a24;
+            --border: #2a2a3a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6a6a7a;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+        }
+
+        .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Flow Diagram */
+        .flow-section {
+            padding: 4rem 2rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+
+        .flow-node {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            min-width: 180px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .flow-node:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .flow-node .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .flow-node .value {
+            font-weight: 600;
+            font-size: 0.9375rem;
+        }
+
+        .flow-arrow {
+            width: 40px;
+            height: 2px;
+            background: var(--border);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid var(--border);
+            border-right: 2px solid var(--border);
+            transform: rotate(45deg);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        /* Platform Cards */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .platform-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .platform-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .platform-card .icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+        }
+
+        .platform-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .platform-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Architecture Flow */
+        .architecture-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .arch-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .arch-step:hover {
+            border-color: var(--accent);
+        }
+
+        .arch-step:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        .arch-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 2.5rem;
+            width: 2px;
+            height: 1.5rem;
+            background: var(--border);
+        }
+
+        .step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Governance */
+        .governance-section {
+            background: var(--bg-elevated);
+        }
+
+        .governance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .governance-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.875rem;
+            padding: 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+        }
+
+        .check {
+            width: 20px;
+            height: 20px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .check::after {
+            content: '';
+            width: 5px;
+            height: 8px;
+            border: solid var(--success);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg) translate(-1px, -1px);
+        }
+
+        .governance-item span {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+        }
+
+        /* Quote */
+        .quote-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        blockquote {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.5;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        blockquote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -0.5rem;
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-author {
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-elevated);
+            text-align: center;
+        }
+
+        .cta-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 4rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .flow-diagram {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                width: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">
-        <div class="brand-mark">LS</div>
-        <div>
-          <strong>Learning Semantics</strong>
-          <span>Finding Meaning</span>
-        </div>
-      </div>
-      <nav>
-  <a href="#platform">Platform</a>
-  <a href="#architecture">Architecture</a>
-  <a href="about.html">People</a>
-  <a href="#contact">Contact</a>
-</nav>
-    </div>
-  </header>
 
-  <main>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-dot"></span>
+                Learning Semantics
+            </a>
+            <div class="nav-links">
+                <a href="#platform">Platform</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#governance">Governance</a>
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">AI-Native • Agent-Driven • Human-Governed</p>
-          <h1>AI-native intelligence infrastructure for accountable systems.</h1>
-          <p class="lead">
-            Learning Semantics builds governed AI-agent systems where AI performs the core reasoning
-            and execution work, while humans retain semantic authority, accountability, and control.
-          </p>
-          <div class="actions">
-            <a class="button primary" href="#architecture">View Architecture</a>
-            <a class="button secondary" href="#contact">Start a Conversation</a>
-          </div>
+        <div class="badge">AI-Native • Agent-Driven • Human-Governed</div>
+        <h1>AI-native intelligence infrastructure for accountable systems</h1>
+        <p class="hero-subtitle">
+            Build governed AI-agent systems where AI performs the core reasoning and execution work, while humans retain semantic authority, accountability, and control.
+        </p>
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Book a Demo</a>
+            <a href="#architecture" class="btn btn-secondary">Explore Architecture</a>
         </div>
-
-        <div class="hero-card">
-          <div class="node human">Human Intent</div>
-          <div class="arrow">↓</div>
-          <div class="agent-row">
-            <div class="node">Planner</div>
-            <div class="node">Coder</div>
-            <div class="node">Reviewer</div>
-          </div>
-          <div class="arrow">↓</div>
-          <div class="node human">Human Approval</div>
-          <div class="audit">Immutable Audit Trail</div>
-        </div>
-      </div>
     </section>
 
-    <section id="platform" class="section">
-      <div class="container">
-        <p class="eyebrow">The Platform</p>
-        <h2>AI is not an add-on. It is the execution layer.</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>Agent-Based Execution</h3>
-            <p>Specialized AI agents plan, generate, review, and refine complex outputs under explicit constraints.</p>
-          </article>
-          <article class="card">
-            <h3>Human Semantic Authority</h3>
-            <p>Humans define intent, approve outcomes, and remain accountable for decisions and external use.</p>
-          </article>
-          <article class="card">
-            <h3>Governance by Design</h3>
-            <p>Prompt versioning, audit logs, reviewer gates, and approval records are embedded into the system.</p>
-          </article>
+    <!-- Flow Diagram -->
+    <section class="flow-section">
+        <div class="flow-diagram">
+            <div class="flow-node">
+                <div class="label">Input</div>
+                <div class="value">Human Intent</div>
+            </div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node">
+                <div class="label">Execution</div>
+                <div class="value">Agent System</div>
+            </div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node">
+                <div class="label">Control</div>
+                <div class="value">Human Approval</div>
+            </div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node">
+                <div class="label">Record</div>
+                <div class="value">Immutable Audit</div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="architecture" class="section alt">
-      <div class="container">
-        <p class="eyebrow">Architecture</p>
-        <h2>Human-governed agent flow</h2>
-        <div class="flow">
-          <div class="flow-step dark">
-            <span>01</span>
-            <strong>Human Intent</strong>
-            <p>Objective, domain, risk tolerance, and audience.</p>
-          </div>
-          <div class="flow-step">
-            <span>02</span>
-            <strong>Planner Agent</strong>
-            <p>Creates a deterministic execution plan.</p>
-          </div>
-          <div class="flow-step">
-            <span>03</span>
-            <strong>Coder Agent</strong>
-            <p>Generates structured artifacts under constraints.</p>
-          </div>
-          <div class="flow-step">
-            <span>04</span>
-            <strong>Reviewer Agent</strong>
-            <p>Blocks unsafe, unclear, or non-compliant outputs.</p>
-          </div>
-          <div class="flow-step dark">
-            <span>05</span>
-            <strong>Human Approval</strong>
-            <p>Final decision, rationale, and accountability.</p>
-          </div>
+    <!-- Platform -->
+    <section id="platform">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>AI is not an add-on. It is the execution layer.</h2>
+                <p>Three core principles that define how we build accountable AI systems.</p>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card fade-in">
+                    <div class="icon">⚡</div>
+                    <h3>Agent-Based Execution</h3>
+                    <p>Specialized AI agents plan, generate, review, and refine complex outputs under explicit constraints. Each agent has a scoped responsibility and operates within defined guardrails.</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="icon">🎯</div>
+                    <h3>Human Semantic Authority</h3>
+                    <p>Humans define intent, approve outcomes, and remain accountable for decisions and external use. The system enforces human oversight at critical decision points.</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="icon">🔒</div>
+                    <h3>Governance by Design</h3>
+                    <p>Prompt versioning, audit logs, reviewer gates, and approval records are embedded into the system—not bolted on as an afterthought.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="governance" class="section">
-      <div class="container split">
-        <div>
-          <p class="eyebrow">Governance</p>
-          <h2>Built for environments where accountability matters.</h2>
-          <p>
-            Learning Semantics aligns with emerging Canadian AI governance expectations by embedding
-            oversight, transparency, risk management, and auditability into the operating architecture.
-          </p>
+    <!-- Architecture -->
+    <section id="architecture" style="background: var(--bg-elevated);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Human-governed agent flow</h2>
+                <p>A deterministic pipeline that ensures accountability at every stage.</p>
+            </div>
+            <div class="architecture-flow">
+                <div class="arch-step fade-in">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <h4>Human Intent</h4>
+                        <p>Objective, domain, risk tolerance, and audience parameters are defined by the human operator.</p>
+                    </div>
+                </div>
+                <div class="arch-step fade-in">
+                    <div class="step-num">02</div>
+                    <div class="step-content">
+                        <h4>Planner Agent</h4>
+                        <p>Creates a deterministic execution plan based on the defined intent and available tools.</p>
+                    </div>
+                </div>
+                <div class="arch-step fade-in">
+                    <div class="step-num">03</div>
+                    <div class="step-content">
+                        <h4>Coder Agent</h4>
+                        <p>Generates structured artifacts under explicit constraints and policy boundaries.</p>
+                    </div>
+                </div>
+                <div class="arch-step fade-in">
+                    <div class="step-num">04</div>
+                    <div class="step-content">
+                        <h4>Reviewer Agent</h4>
+                        <p>Blocks unsafe, unclear, or non-compliant outputs before they reach human review.</p>
+                    </div>
+                </div>
+                <div class="arch-step fade-in">
+                    <div class="step-num">05</div>
+                    <div class="step-content">
+                        <h4>Human Approval</h4>
+                        <p>Final decision, rationale documentation, and accountability assignment.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="checklist">
-          <div>✓ Versioned prompt registry</div>
-          <div>✓ Agent run logging</div>
-          <div>✓ Reviewer blocking controls</div>
-          <div>✓ Human approval records</div>
-          <div>✓ Immutable audit trail</div>
+    </section>
+
+    <!-- Governance -->
+    <section id="governance" class="governance-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Built for environments where accountability matters</h2>
+                <p>Aligned with emerging Canadian AI governance expectations by embedding oversight, transparency, risk management, and auditability into the operating architecture.</p>
+            </div>
+            <div class="governance-grid">
+                <div class="governance-item fade-in">
+                    <div class="check"></div>
+                    <span>Versioned prompt registry</span>
+                </div>
+                <div class="governance-item fade-in">
+                    <div class="check"></div>
+                    <span>Agent run logging</span>
+                </div>
+                <div class="governance-item fade-in">
+                    <div class="check"></div>
+                    <span>Reviewer blocking controls</span>
+                </div>
+                <div class="governance-item fade-in">
+                    <div class="check"></div>
+                    <span>Human approval records</span>
+                </div>
+                <div class="governance-item fade-in">
+                    <div class="check"></div>
+                    <span>Immutable audit trail</span>
+                </div>
+                <div class="governance-item fade-in">
+                    <div class="check"></div>
+                    <span>Policy constraint enforcement</span>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="section alt">
-      <div class="container">
-        <blockquote>
-          “AI-native systems place AI agents at the core of execution, not at the edge of workflows —
-          while ensuring humans retain authority, responsibility, and control.”
-        </blockquote>
-      </div>
+    <!-- Quote -->
+    <section>
+        <div class="container">
+            <div class="quote-section fade-in">
+                <blockquote>
+                    AI-native systems place AI agents at the core of execution, not at the edge of workflows — while ensuring humans retain authority, responsibility, and control.
+                </blockquote>
+                <p class="quote-author">— Learning Semantics Design Principle</p>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" class="section contact">
-      <div class="container">
-        <p>For demos, pilots, partnerships, or public-sector conversations, contact Learning Semantics.</p>
-        <a class="button primary" href="mailto:hello@learningsemantics.com">hello@learningsemantics.com</a>
-      </div>
+    <!-- CTA -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="cta-box fade-in">
+                <h2>Ready to govern your AI systems?</h2>
+                <p>Schedule a demo to see how Learning Semantics can bring accountability to your AI infrastructure.</p>
+                <a href="mailto:hello@learningsemantics.com" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="container footer">
-      <span>© Learning Semantics</span>
-      <span>AI-Native. Agent-Driven. Human-Governed.</span>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-dot"></span>
+                    Learning Semantics
+                </a>
+                <p>Building the infrastructure for accountable AI-agent systems. Based in Canada.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#platform">Platform</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#governance">Governance</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#contact">Contact</a>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Learning Semantics. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
