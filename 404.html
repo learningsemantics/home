@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | Learning Semantics</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%236366f1'/><circle cx='50' cy='50' r='20' fill='%23f0f0f5'/></svg>">
     <meta name="description" content="The page you're looking for doesn't exist.">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%236366f1'/><circle cx='50' cy='50' r='20' fill='%23f0f0f5'/></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg: #0a0a0f;
@@ -19,8 +22,21 @@
             --text-muted: #6a6a7a;
             --accent: #6366f1;
             --accent-hover: #818cf8;
-            --radius: 12px;
             --radius-sm: 8px;
+        }
+
+        /* Respect system preference on error page */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #fafafa;
+                --bg-elevated: #ffffff;
+                --border: #e5e5ea;
+                --text-primary: #111118;
+                --text-secondary: #6b6b78;
+                --text-muted: #a0a0a8;
+                --accent: #4f46e5;
+                --accent-hover: #4338ca;
+            }
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -96,6 +112,7 @@
             98% { transform: translate(1px, 1px); }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="error-container">
