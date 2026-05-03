@@ -637,6 +637,57 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9375rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-note {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.form-note a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.form-note a:hover {
+    text-decoration: underline;
+}
     </style>
 </head>
 <body>
@@ -818,16 +869,32 @@
     </section>
 
     <!-- CTA -->
-    <section id="contact" class="cta-section">
-        <div class="container">
-            <div class="cta-box fade-in">
-                <h2>Ready to govern your AI systems?</h2>
-                <p>Schedule a demo to see how Learning Semantics can bring accountability to your AI infrastructure.</p>
-                <a href="mailto:hello@learningsemantics.com" class="btn btn-primary">Contact Us</a>
-            </div>
+    <!-- Replace the existing CTA section with this -->
+<section id="contact" class="cta-section">
+    <div class="container">
+        <div class="cta-box fade-in">
+            <h2>Ready to govern your AI systems?</h2>
+            <p>Get in touch to schedule a demo or discuss your governance needs.</p>
+            
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Work email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
+                </div>
+                <input type="text" name="_gotcha" style="display:none">
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    Send Message
+                </button>
+            </form>
+            <p class="form-note">Or email us directly at <a href="mailto:hello@learningsemantics.com">hello@learningsemantics.com</a></p>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
