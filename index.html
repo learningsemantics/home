@@ -978,7 +978,82 @@
             opacity: 1;
             transform: translateY(0);
         }
+    
+        .form-success, .form-error {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-top: 1.5rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .form-success {
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .form-error {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .success-icon, .error-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .success-icon {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+        }
+
+        .error-icon {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+        }
+
+        .form-success h3, .form-error h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .form-success p, .form-error p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin: 0;
+        }
+
+        .btn-loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .btn-loading::after {
+            content: '';
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid transparent;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -1267,7 +1342,7 @@
                 <h2>Ready to govern your AI systems?</h2>
                 <p>Get in touch to schedule a demo or discuss your governance needs.</p>
 
-                <form action="https://formspree.io/f/xnjyzyga" method="POST" class="contact-form">
+                <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your name" required>
                     </div>
@@ -1278,10 +1353,23 @@
                         <textarea name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
                     </div>
                     <input type="text" name="_gotcha" style="display:none">
-                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="submitBtn">
                         Send Message
                     </button>
                 </form>
+
+                <div id="formSuccess" class="form-success" style="display:none;">
+                    <div class="success-icon">&#10003;</div>
+                    <h3>Message sent</h3>
+                    <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+                    <button class="btn btn-secondary" onclick="resetForm()" style="margin-top:1rem;">Send another</button>
+                </div>
+
+                <div id="formError" class="form-error" style="display:none;">
+                    <div class="error-icon">&#10007;</div>
+                    <h3>Something went wrong</h3>
+                    <p>Please try again or email us directly at <a href="mailto:hello@learningsemantics.com">hello@learningsemantics.com</a>.</p>
+                </div>
                 <p class="form-note">Or email us directly at <a href="mailto:hello@learningsemantics.com">hello@learningsemantics.com</a></p>
             </div>
         </div>
@@ -1305,28 +1393,94 @@
             </div>
             <div class="footer-col">
                 <h4>Company</h4>
-                <a href="about.html">About</a>
+                <a href="about/">About</a>
                 <a href="#contact">Contact</a>
                 <a href="#">Careers</a>
             </div>
             <div class="footer-col">
                 <h4>Legal</h4>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
+                <a href="privacy/">Privacy Policy</a>
+                <a href="terms/">Terms of Service</a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Learning Semantics. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://linkedin.com/company/learningsemantics" aria-label="LinkedIn">
+                <a href="#" aria-label="LinkedIn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                 </a>
-                
+                <a href="#" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
             </div>
         </div>
     </footer>
 
     <script>
+        // Contact Form AJAX Handler
+        (function() {
+            var form = document.getElementById('contactForm');
+            var submitBtn = document.getElementById('submitBtn');
+            var successDiv = document.getElementById('formSuccess');
+            var errorDiv = document.getElementById('formError');
+
+            if (!form) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Show loading state
+                submitBtn.classList.add('btn-loading');
+                submitBtn.textContent = 'Sending...';
+
+                var formData = new FormData(form);
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('POST', form.action, true);
+                xhr.setRequestHeader('Accept', 'application/json');
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState !== 4) return;
+
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.textContent = 'Send Message';
+
+                    if (xhr.status === 200) {
+                        // Success
+                        form.style.display = 'none';
+                        successDiv.style.display = 'block';
+                        errorDiv.style.display = 'none';
+
+                        // Optional: scroll to success message
+                        successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        // Error
+                        errorDiv.style.display = 'block';
+                        successDiv.style.display = 'none';
+                    }
+                };
+
+                xhr.onerror = function() {
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.textContent = 'Send Message';
+                    errorDiv.style.display = 'block';
+                    successDiv.style.display = 'none';
+                };
+
+                xhr.send(formData);
+            });
+
+            window.resetForm = function() {
+                form.reset();
+                form.style.display = 'flex';
+                successDiv.style.display = 'none';
+                errorDiv.style.display = 'none';
+            };
+        })();
+
         // Theme Toggle
         (function() {
             const toggle = document.getElementById('themeToggle');
@@ -1394,21 +1548,5 @@
                 }
             });
         });
-    </script>
-
-    <!-- Force same-tab navigation for all internal links -->
-    <script>
-        document.querySelectorAll('a').forEach(function(link) {
-            link.removeAttribute('target');
-            link.addEventListener('click', function(e) {
-                // Prevent any default new-tab behavior
-                if (link.getAttribute('target') === '_blank') {
-                    e.preventDefault();
-                    window.location.href = link.href;
-                }
-            });
-        });
-    </script>
-    
-</body>
+    </script></body>
 </html>
