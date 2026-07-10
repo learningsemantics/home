@@ -23,7 +23,6 @@ export function SiteFooter() {
           <div>
             <p className="footer-label">Company</p>
             <Link href="/company">About</Link>
-            <Link href="/company#contact">Contact</Link>
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">Terms</Link>
           </div>
