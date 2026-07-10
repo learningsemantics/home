@@ -11,7 +11,9 @@ export function SiteFooter() {
           <p className="footer-statement">
             Finding meaning in the age of machine action.
           </p>
-          <p className="footer-location">Based in Canada.</p>
+          <p className="footer-location">
+            <span aria-hidden="true">🍁</span> Built in Canada
+          </p>
         </div>
         <div className="footer-links" aria-label="Footer navigation">
           <div>
