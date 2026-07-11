@@ -46,12 +46,12 @@ export default function Home() {
       <section className="home-hero">
         <div className="shell hero-grid">
           <div className="hero-copy reveal">
-            <Eyebrow>Semantic governance infrastructure for AI agents</Eyebrow>
+            <Eyebrow>The Enterprise Semantic Control Plane</Eyebrow>
             <h1>Govern AI agents by meaning—not just mechanics.</h1>
             <p className="hero-lede">
-              As AI systems move from generating content to taking action,
-              organizations need a way to preserve intent, decision rights,
-              policy context, and accountability across every consequential action.
+              Learning Semantics connects organizational intent, policy context,
+              decision rights, and accountability to every consequential action
+              enterprise AI agents propose or take.
             </p>
             <div className="hero-actions">
               <Link className="button button-dark" href="/company#contact">
@@ -96,8 +96,8 @@ export default function Home() {
         <div className="shell">
           <SectionIntro
             eyebrow="The platform"
-            title="A semantic governance layer for agentic systems."
-            body="Learning Semantics connects what an organization means to what an AI system is allowed to do. It provides a structured way to define intent, apply context-aware controls, retain human authority, and create reviewable evidence."
+            title="The semantic control plane for enterprise AI agents."
+            body="Learning Semantics connects what an organization means to what its AI systems are allowed to do. The control plane provides a consistent way to define intent, apply context-aware controls, retain human authority, and create reviewable evidence across agent-enabled workflows."
           />
           <div className="principle-strip">
             <article>
