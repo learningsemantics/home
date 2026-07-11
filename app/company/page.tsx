@@ -6,7 +6,7 @@ import { ContactForm } from "./ContactForm";
 export const metadata: Metadata = {
   title: "About Learning Semantics",
   description:
-    "Learning Semantics is building semantic governance infrastructure for accountable AI-agent systems. Based in Canada.",
+    "Learning Semantics is building the enterprise semantic control plane for accountable AI-agent systems. Built in Canada.",
   alternates: { canonical: "/company" },
 };
 
@@ -19,8 +19,9 @@ export default function CompanyPage() {
             <Eyebrow>Company</Eyebrow>
             <h1>Finding meaning in the age of machine action.</h1>
             <p className="hero-lede">
-              Learning Semantics is building the governance infrastructure
-              organizations need as AI systems begin to act with greater autonomy.
+              Learning Semantics is building the enterprise semantic control plane:
+              the layer that keeps organizational meaning, authority, and
+              accountability connected as AI systems act with greater autonomy.
             </p>
           </div>
           <DecisionField compact />
