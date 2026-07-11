@@ -4,7 +4,7 @@ import { ClosingCta, Eyebrow, PageFrame, SectionIntro } from "../components/Page
 export const metadata: Metadata = {
   title: "AI Governance Use Cases",
   description:
-    "Explore governed AI-agent use cases for regulated knowledge work, enterprise agent programs, and human-accountable decisions.",
+    "Explore where an enterprise semantic control plane creates value across regulated work, agent programs, and human-accountable decisions.",
   alternates: { canonical: "/use-cases" },
 };
 
@@ -18,7 +18,7 @@ const useCases = [
   {
     number: "02",
     title: "Enterprise agent programs",
-    text: "Create a consistent authority and evidence model across multiple agent-enabled workflows.",
+    text: "Apply a consistent semantic control plane for authority and evidence across multiple agent-enabled workflows.",
     signal: "When autonomy needs a common operating model",
   },
   {
