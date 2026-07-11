@@ -4,7 +4,7 @@ import { ClosingCta, Eyebrow, PageFrame, SectionIntro } from "../components/Page
 export const metadata: Metadata = {
   title: "Why Learning Semantics",
   description:
-    "See how semantic governance closes the gap between human intent, written policy, and AI-agent action.",
+    "See how an enterprise semantic control plane closes the gap between human intent, written policy, and AI-agent action.",
   alternates: { canonical: "/why-us" },
 };
 
@@ -40,13 +40,14 @@ export default function WhyUsPage() {
     <PageFrame>
       <section className="page-hero page-hero-centered">
         <div className="shell narrow-shell">
-          <Eyebrow>Why Learning Semantics</Eyebrow>
+          <Eyebrow>The control-plane difference</Eyebrow>
           <h1>Governance is an operating capability—not a checklist.</h1>
           <p className="hero-lede">
             Traditional governance often concentrates on the model, a deployment
             checkpoint, or documentation assembled after the fact. Semantic
             governance focuses on what the system is trying to accomplish, in
-            context, and under whose authority.
+            context, and under whose authority. A semantic control plane makes
+            those expectations operational across enterprise agent systems.
           </p>
         </div>
       </section>

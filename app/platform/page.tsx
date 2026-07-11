@@ -4,9 +4,9 @@ import { ClosingCta, Eyebrow, PageFrame, SectionIntro } from "../components/Page
 import { DecisionField } from "../components/DecisionField";
 
 export const metadata: Metadata = {
-  title: "AI Agent Governance Platform",
+  title: "Enterprise Semantic Control Plane",
   description:
-    "Define intent, govern consequential AI action, preserve human authority, and create reviewable evidence across agentic workflows.",
+    "A semantic control plane that connects enterprise intent, policy, decision rights, and accountable evidence to consequential AI-agent action.",
   alternates: { canonical: "/platform" },
 };
 
@@ -53,13 +53,13 @@ export default function PlatformPage() {
       <section className="page-hero">
         <div className="shell page-hero-grid">
           <div>
-            <Eyebrow>Platform</Eyebrow>
-            <h1>A governance layer for systems that can act.</h1>
+            <Eyebrow>Enterprise Semantic Control Plane</Eyebrow>
+            <h1>A semantic control plane for systems that can act.</h1>
             <p className="hero-lede">
-              Learning Semantics is designed for the point where AI moves beyond
-              assistance and begins to influence or execute work. The platform
-              connects organizational intent, policy context, and human authority
-              to the decisions an agentic system makes.
+              Learning Semantics operates across enterprise agent systems at the
+              point where AI moves beyond assistance and begins to influence or
+              execute work. It connects organizational intent, policy context,
+              and human authority to the decisions those systems make.
             </p>
             <Link className="text-link" href="/company#contact">
               Discuss a governed pilot <span aria-hidden="true">→</span>
@@ -74,7 +74,7 @@ export default function PlatformPage() {
           <SectionIntro
             eyebrow="Core capabilities"
             title="Govern the action, not only the model."
-            body="A coherent governance layer keeps meaning, control, and evidence connected as AI participates in real work."
+            body="A common semantic control plane keeps meaning, authority, control, and evidence connected as AI participates in real work across models, tools, and workflows."
           />
           <div className="capability-grid">
             {capabilities.map((item, index) => (

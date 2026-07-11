@@ -1,7 +1,7 @@
 # Learning Semantics public website
 
 Production website for [Learning Semantics](https://learningsemantics.com), an
-AI-native company building semantic governance infrastructure for accountable
+AI-native company building the enterprise semantic control plane for accountable
 AI-agent systems.
 
 The public site communicates the category, value, and operating principles

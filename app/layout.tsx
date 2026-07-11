@@ -6,11 +6,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://learningsemantics.com"),
   title: {
-    default: "Semantic Governance for AI Agents | Learning Semantics",
+    default: "Enterprise Semantic Control Plane | Learning Semantics",
     template: "%s | Learning Semantics",
   },
   description:
-    "Learning Semantics helps organizations preserve human intent, decision rights, and accountability as AI agents move from assistance to action.",
+    "Learning Semantics is the enterprise semantic control plane connecting human intent, policy, decision rights, and accountability to AI-agent action.",
   applicationName: "Learning Semantics",
   authors: [{ name: "Learning Semantics" }],
   creator: "Learning Semantics",
@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   category: "AI governance",
   keywords: [
     "semantic governance",
+    "enterprise semantic control plane",
+    "semantic control plane",
     "AI agent governance",
     "responsible AI",
     "human oversight",
@@ -29,15 +31,15 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: "/",
     siteName: "Learning Semantics",
-    title: "Semantic Governance for AI Agents",
+    title: "The Enterprise Semantic Control Plane",
     description:
-      "Preserve human intent, decision rights, and accountability as AI systems move from assistance to action.",
+      "Connect human intent, policy, decision rights, and accountability to enterprise AI-agent action.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Semantic Governance for AI Agents",
+    title: "The Enterprise Semantic Control Plane",
     description:
-      "Preserve human intent, decision rights, and accountability as AI systems move from assistance to action.",
+      "Connect human intent, policy, decision rights, and accountability to enterprise AI-agent action.",
   },
   robots: {
     index: true,
